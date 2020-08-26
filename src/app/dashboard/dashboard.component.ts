@@ -18,6 +18,11 @@ export class DashboardComponent implements OnInit {
   currentExpenditure: number;
   availableFunds: number;
 
+  clients: string[];
+  projects: string[];
+  years: number[] = [];
+  teamMembersSummary = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +35,34 @@ export class DashboardComponent implements OnInit {
     this.projectCost = 2113507;
     this.currentExpenditure = 96788;
     this.availableFunds = 52538;
+
+    this.clients = [
+      'Sterling Bank Plc',
+      'Software Business Solution Consulting',
+      'Flutterwave',
+      'NIPS Systems'
+    ];
+
+    this.projects = [
+      'EdInvest',
+      'Edubanc',
+      'EdPay',
+      'EdClub'
+    ];
+
+    for (let year = 2020; year >= 2010; year--)
+     {
+      this.years.push(year);
+     }
+
+    this.teamMembersSummary = [
+       { Region: 'East', TeamMembersCount: 20, TemporarilyUnavailableMembers: 4},
+       { Region: 'West', TeamMembersCount: 15, TemporarilyUnavailableMembers: 8},
+       { Region: 'North', TeamMembersCount: 17, TemporarilyUnavailableMembers: 1},
+       { Region: 'South', TeamMembersCount: 16, TemporarilyUnavailableMembers: 6},
+     ];
+
+
   }
 
 }
