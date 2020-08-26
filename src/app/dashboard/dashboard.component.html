@@ -57,9 +57,8 @@
           <div class="col-12 text-center pb-2">CLIENTS</div>
           <div class="col-12">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">ABC Infotech Solutions</li>
-              <li class="list-group-item">SBSC Solutions</li>
-              <li class="list-group-item">Google Inc</li>
+              <li class="list-group-item" *ngFor="let client of clients">{{ client }}</li>
+
             </ul>
           </div>
 
@@ -75,13 +74,11 @@
           <div class="col-6 text-left">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle='dropdown'>
-                  Project A
+                  Projects
                 </button>
                 <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item">Project A</a>
-                  <a href="#" class="dropdown-item">Project B</a>
-                  <a href="#" class="dropdown-item">Project C</a>
-                  <a href="#" class="dropdown-item">Project D</a>
+                  <a href="#" class="dropdown-item" *ngFor="let project of projects">{{ project }}</a>
+
                 </div>
               </div>
           </div>
@@ -91,10 +88,7 @@
                 2020
               </button>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">2020</a>
-                <a href="#" class="dropdown-item">2019</a>
-                <a href="#" class="dropdown-item">2018</a>
-                <a href="#" class="dropdown-item">2017</a>
+                <a href="#" class="dropdown-item" *ngFor="let year of years">{{ year }}</a>
               </div>
             </div>
           </div>
@@ -136,36 +130,12 @@
           <th>Temporarily Unavailable Members</th>
         </tr>
 
-        <tr>
+        <tr *ngFor="let teamMemberSummary of teamMembersSummary">
           <td>
-            <b>East</b>
+            <b>{{teamMemberSummary.Region}}</b>
           </td>
-          <td>20</td>
-          <td>4</td>
-        </tr>
-
-        <tr>
-          <td>
-            <b>South</b>
-          </td>
-          <td>15</td>
-          <td>8</td>
-        </tr>
-
-        <tr>
-          <td>
-            <b>West</b>
-          </td>
-          <td>17</td>
-          <td>1</td>
-        </tr>
-
-        <tr>
-          <td>
-            <b>North</b>
-          </td>
-          <td>15</td>
-          <td>6</td>
+          <td>{{ teamMemberSummary.TeamMembersCount }}</td>
+          <td>{{ teamMemberSummary.TemporarilyUnavailableMembers }}</td>
         </tr>
 
       </table>
