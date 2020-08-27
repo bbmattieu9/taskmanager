@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: './app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   projects: string[];
   years: number[] = [];
   teamMembersSummary = [];
+  teamMembers = [];
 
   constructor() { }
 
@@ -62,7 +63,38 @@ export class DashboardComponent implements OnInit {
        { Region: 'South', TeamMembersCount: 16, TemporarilyUnavailableMembers: 6},
      ];
 
+    this.teamMembers = [
+       { Region: 'East', Members: [
+          {ID: 1, Name: 'Tosin Lasisi', Status: 'Available'},
+          {ID: 2, Name: 'Folaranmi D', Status: 'Available'},
+          {ID: 3, Name: 'Babatoonday Mattieu', Status: 'Available'},
+          {ID: 4, Name: 'Michael Mensah', Status: 'Available'}
+       ]},
+
+       { Region: 'West', Members: [
+        {ID: 1, Name: 'Tosin Aribisala', Status: 'Busy'},
+        {ID: 2, Name: 'Folaranmi Dogo', Status: 'Busy'},
+        {ID: 3, Name: 'Ahmed Dlaw', Status: 'Available'},
+        {ID: 4, Name: 'Kola Stanbic', Status: 'Available'}
+     ]},
+
+     { Region: 'North', Members: [
+      {ID: 1, Name: 'Kafayat Afolake', Status: 'Available'},
+      {ID: 2, Name: 'Dele Dudu', Status: 'Busy'},
+      {ID: 3, Name: 'Bimpe Mattieu', Status: 'Available'},
+      {ID: 4, Name: 'Moliki Alao', Status: 'Busy'}
+   ]},
+
+   { Region: 'South', Members: [
+    {ID: 1, Name: 'Bolaji Mobile', Status: 'Available'},
+    {ID: 2, Name: 'Phebe Durojaye', Status: 'Available'},
+    {ID: 3, Name: 'Bola Amos', Status: 'Busy'},
+    {ID: 4, Name: 'Michael Sukurat', Status: 'Busy'}
+ ]}
+     ];
+
 
   }
+
 
 }
