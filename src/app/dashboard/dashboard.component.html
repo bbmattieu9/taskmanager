@@ -77,7 +77,10 @@
                   Projects
                 </button>
                 <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item" *ngFor="let project of projects">{{ project }}</a>
+                  <a href="#" class="dropdown-item" *ngFor="let project of projects"
+                    onclick=' return false'
+                    (click)="onProjectChanged($event)"
+                  >{{ project }}</a>
 
                 </div>
               </div>

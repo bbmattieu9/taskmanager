@@ -26,6 +26,26 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  onProjectChanged($event): void {
+    if ($event.target.innerHTML === 'EdPay') {
+      this.projectCost = 30000;
+      this.currentExpenditure = 96000;
+      this.availableFunds = 200000;
+    } else if ($event.target.innerHTML === 'EdInvest') {
+      this.projectCost = 20000;
+      this.currentExpenditure = 91000;
+      this.availableFunds = 205000;
+    } else if ($event.target.innerHTML === 'Edubanc') {
+      this.projectCost = 19000;
+      this.currentExpenditure = 82000;
+      this.availableFunds = 230000;
+    } else if ($event.target.innerHTML === 'EdClub') {
+      this.projectCost = 88000;
+      this.currentExpenditure = 82000;
+      this.availableFunds = 230000;
+    }
+  }
+
   ngOnInit(): void {
     this.Designation = 'Team Leader';
     this.Username = 'Adeleke Adeyemi';
