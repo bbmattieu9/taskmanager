@@ -49,7 +49,7 @@
 
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   UPCOMING PROJECTS
-                  <span class="badge badge-secondary badge-pill">{{ upComingProjects }}</span>
+                  <span class="badge badge-secondary badge-pill">{{ upComingProjects  | percent}}</span>
                 </li>
             </ul>
           </div>
@@ -91,7 +91,15 @@
                 2020
               </button>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-item" *ngFor="let year of years">{{ year }}</a>
+                <a href="#" class="dropdown-item" *ngFor="let year of years">
+                  <span [ngSwitch]='year'>
+                    <span *ngSwitchCase=" '2020'" style="color: green">{{ year }}</span>
+                    <span *ngSwitchCase=" '2019'" style="color: blue">{{ year }}</span>
+                    <span *ngSwitchCase=" '2018'" style="color: red">{{ year }}</span>
+                    <span *ngSwitchDefault style="color: black">{{ year }}</span>
+                  </span>
+                </a>
+
               </div>
             </div>
           </div>
@@ -111,12 +119,12 @@
 
         <tr>
           <td>Current Expenditure</td>
-          <td>{{ currentExpenditure}}</td>
+          <td>{{ currentExpenditure | currency}}</td>
         </tr>
 
         <tr>
           <td>Available Funds</td>
-          <td>{{ availableFunds }}</td>
+          <td>{{ availableFunds | currency }}</td>
         </tr>
       </table>
     </div>
