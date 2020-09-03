@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { TeamsComponent } from './teams/teams.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AboutComponent,
-    TeamsComponent
+    TeamsComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
