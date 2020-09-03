@@ -46,6 +46,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+
+  capitalizeFirstLetter = (str) => {
+    return str.toString().replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() +
+        txt.substr(1).toLowerCase();
+    });
+  }
+
   ngOnInit(): void {
     this.Designation = 'Team Leader';
     this.Username = 'Adeleke Adeyemi';
@@ -71,48 +79,54 @@ export class DashboardComponent implements OnInit {
       'EdClub'
     ];
 
-    for (let year = 2020; year >= 2010; year--)
-     {
+    for (let year = 2020; year >= 2010; year--) {
       this.years.push(year);
-     }
+    }
 
     this.teamMembersSummary = [
-       { Region: 'East', TeamMembersCount: 20, TemporarilyUnavailableMembers: 4},
-       { Region: 'West', TeamMembersCount: 15, TemporarilyUnavailableMembers: 8},
-       { Region: 'North', TeamMembersCount: 17, TemporarilyUnavailableMembers: 1},
-       { Region: 'South', TeamMembersCount: 16, TemporarilyUnavailableMembers: 6},
-     ];
+      { Region: 'East', TeamMembersCount: 20, TemporarilyUnavailableMembers: 4 },
+      { Region: 'West', TeamMembersCount: 15, TemporarilyUnavailableMembers: 8 },
+      { Region: 'North', TeamMembersCount: 17, TemporarilyUnavailableMembers: 1 },
+      { Region: 'South', TeamMembersCount: 16, TemporarilyUnavailableMembers: 6 },
+    ];
 
     this.teamMembers = [
-       { Region: 'East', Members: [
-          {ID: 1, Name: 'Tosin Lasisi', Status: 'Available'},
-          {ID: 2, Name: 'Folaranmi D', Status: 'Available'},
-          {ID: 3, Name: 'Babatoonday Mattieu', Status: 'Available'},
-          {ID: 4, Name: 'Michael Mensah', Status: 'Available'}
-       ]},
+      {
+        Region: 'East', Members: [
+          { ID: 1, Name: 'Tosin Lasisi', Status: 'Available' },
+          { ID: 2, Name: 'Folaranmi D', Status: 'Available' },
+          { ID: 3, Name: 'Babatoonday Mattieu', Status: 'Available' },
+          { ID: 4, Name: 'Michael Mensah', Status: 'Available' }
+        ]
+      },
 
-       { Region: 'West', Members: [
-        {ID: 1, Name: 'Tosin Aribisala', Status: 'Busy'},
-        {ID: 2, Name: 'Folaranmi Dogo', Status: 'Busy'},
-        {ID: 3, Name: 'Ahmed Dlaw', Status: 'Available'},
-        {ID: 4, Name: 'Kola Stanbic', Status: 'Available'}
-     ]},
+      {
+        Region: 'West', Members: [
+          { ID: 1, Name: 'Tosin Aribisala', Status: 'Busy' },
+          { ID: 2, Name: 'Folaranmi Dogo', Status: 'Busy' },
+          { ID: 3, Name: 'Ahmed Dlaw', Status: 'Available' },
+          { ID: 4, Name: 'Kola Stanbic', Status: 'Available' }
+        ]
+      },
 
-     { Region: 'North', Members: [
-      {ID: 1, Name: 'Kafayat Afolake', Status: 'Available'},
-      {ID: 2, Name: 'Dele Dudu', Status: 'Busy'},
-      {ID: 3, Name: 'Bimpe Mattieu', Status: 'Available'},
-      {ID: 4, Name: 'Moliki Alao', Status: 'Busy'}
-   ]},
+      {
+        Region: 'North', Members: [
+          { ID: 1, Name: 'Kafayat Afolake', Status: 'Available' },
+          { ID: 2, Name: 'Dele Dudu', Status: 'Busy' },
+          { ID: 3, Name: 'Bimpe Mattieu', Status: 'Available' },
+          { ID: 4, Name: 'Moliki Alao', Status: 'Busy' }
+        ]
+      },
 
-   { Region: 'South', Members: [
-    {ID: 1, Name: 'Bolaji Mobile', Status: 'Available'},
-    {ID: 2, Name: 'Phebe Durojaye', Status: 'Available'},
-    {ID: 3, Name: 'Bola Amos', Status: 'Busy'},
-    {ID: 4, Name: 'Michael Sukurat', Status: 'Busy'}
- ]}
-     ];
-
+      {
+        Region: 'South', Members: [
+          { ID: 1, Name: 'Bolaji Mobile', Status: 'Available' },
+          { ID: 2, Name: 'Phebe Durojaye', Status: 'Available' },
+          { ID: 3, Name: 'Bola Amos', Status: 'Busy' },
+          { ID: 4, Name: 'Michael Sukurat', Status: 'Busy' }
+        ]
+      }
+    ];
 
   }
 
