@@ -5,6 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from '../app/admin/admin.module';
 import { AppComponent } from './app.component';
 
+// import InMemoryWebApi
+// import { InMemoryDataService } from '../app/in-memory-api/in-memory-data-service';
+// import { environment as env } from '../environments/environment';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryData } from '../app/in-memory-api/in-memory-data';
+
+
 
 @NgModule({
   declarations: [
@@ -13,7 +22,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AdminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
