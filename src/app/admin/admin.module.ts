@@ -5,6 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AboutComponent } from './about/about.component';
 
+// Services
+import { DashboardService } from '../shared/dashboard.service';
+
 
 
 @NgModule({
@@ -20,6 +23,7 @@ import { AboutComponent } from './about/about.component';
     DashboardComponent,
     MyProfileComponent,
     AboutComponent
-  ]
+  ],
+  providers: [DashboardService]
 })
 export class AdminModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from 'src/app/shared/dashboard.service';
 
 @Component({
   selector: './app-dashboard',
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
   teamMembersSummary = [];
   teamMembers = [];
 
-  constructor() { }
+  constructor(private dashboardSrv: DashboardService) { }
 
   onProjectChanged($event): void {
     if ($event.target.innerHTML === 'EdPay') {
@@ -83,12 +84,7 @@ export class DashboardComponent implements OnInit {
       this.years.push(year);
     }
 
-    this.teamMembersSummary = [
-      { Region: 'East', TeamMembersCount: 20, TemporarilyUnavailableMembers: 4 },
-      { Region: 'West', TeamMembersCount: 15, TemporarilyUnavailableMembers: 8 },
-      { Region: 'North', TeamMembersCount: 17, TemporarilyUnavailableMembers: 1 },
-      { Region: 'South', TeamMembersCount: 16, TemporarilyUnavailableMembers: 6 },
-    ];
+    this.teamMembersSummary = this.dashboardSrv.getTeamMembersSummary();
 
     this.teamMembers = [
       {
