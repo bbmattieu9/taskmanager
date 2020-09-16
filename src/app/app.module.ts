@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from '../app/admin/admin.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // import InMemoryWebApi
 // import { InMemoryDataService } from '../app/in-memory-api/in-memory-data-service';
@@ -22,6 +23,7 @@ import { InMemoryData } from '../app/in-memory-api/in-memory-data';
   imports: [
     BrowserModule,
     AdminModule,
+    HttpClientModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
 
