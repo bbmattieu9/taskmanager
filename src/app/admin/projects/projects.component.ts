@@ -14,8 +14,9 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectSrv: ProjectsService) { }
 
 
-  getProjects(): any {
-    this.projectSrv.getAllProjects()
+  // tslint:disable-next-line: typedef
+  getProjects() {
+    return this.projectSrv.getAllProjects()
     .subscribe(
       (projects: Project[]) => {
         console.log('[Projects]:', projects);
