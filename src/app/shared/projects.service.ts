@@ -15,8 +15,14 @@ export class ProjectsService {
 
   constructor(private httpSrv: HttpClient) { }
 
+  // GET all projects
   getAllProjects(): Observable<Project[]> {
     return this.httpSrv.get<Project[]>(this.projectsUrl);
+  }
+
+  // POST a new project
+  createProject(newProject: Project): Observable<Project>{
+    return this.httpSrv.post<Project>(this.projectsUrl, newProject);
   }
 }
 
