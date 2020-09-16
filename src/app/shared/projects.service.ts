@@ -13,10 +13,10 @@ export class ProjectsService {
 
   private projectsUrl = 'api/projects';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpSrv: HttpClient) { }
 
   getAllProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>(this.projectsUrl);
+    return this.httpSrv.get<Project[]>(this.projectsUrl);
   }
 }
 
