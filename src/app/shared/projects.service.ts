@@ -22,8 +22,8 @@ export class ProjectsService {
   }
 
   // POST a new project
-  createProject(newProject: Project): Observable<Project>{
-    return this.httpSrv.post<Project>(this.projectsUrl, newProject);
+  createProject(newProjectObj: Project): Observable<Project>{
+    return this.httpSrv.post<Project>(this.projectsUrl, newProjectObj);
   }
 
   createProduct(project: Project): Observable<Project> {
