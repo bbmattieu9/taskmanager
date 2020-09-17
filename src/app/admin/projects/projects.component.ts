@@ -30,8 +30,13 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  onCreateProject(): void {
+  // tslint:disable-next-line: typedef
+  onCreateProject() {
      console.log('[onCreateProject Not Yet Implemented!!]');
+
+     if (!this.createProjectForm.valid) { return false; }
+
+     console.log('[New Project Created]', this.createProjectForm.value);
   }
 
   resetForm(): void {
