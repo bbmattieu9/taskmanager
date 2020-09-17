@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../../shared/projects.service';
 import { Project } from '../../model/projects';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -10,8 +12,10 @@ import { Project } from '../../model/projects';
 export class ProjectsComponent implements OnInit {
 
   projects: Project[];
+  createProjectForm: FormGroup;
 
-  constructor(private projectSrv: ProjectsService) { }
+  constructor(private projectSrv: ProjectsService,
+              private fb: FormBuilder) { }
 
 
   // tslint:disable-next-line: typedef
@@ -26,8 +30,23 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
+  onCreateProject(): void {
+     console.log('[onCreateProject Not Yet Implemented!!]');
+  }
+
+  resetForm(): void {
+    this.createProjectForm.reset();
+  }
+
   ngOnInit(): void {
     this.getProjects();
+
+    this.createProjectForm = this.fb.group({
+      projectID: ['', Validators.required],
+      projectName: ['', [Validators.required, Validators.minLength(5)]],
+      startDate: ['', Validators.required],
+      teamSize: ['', Validators.required]
+    });
   }
 
 }

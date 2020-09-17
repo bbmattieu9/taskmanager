@@ -8,6 +8,7 @@ import { ProjectsComponent } from './projects/projects.component';
 
 // Services
 import { DashboardService } from '../shared/dashboard.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { DashboardService } from '../shared/dashboard.service';
     ProjectsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     DashboardComponent,

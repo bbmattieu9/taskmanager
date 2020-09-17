@@ -27,7 +27,8 @@
 </div>
 
 
-<form >
+<form [formGroup]="createProjectForm"
+      (ngSubmit)="onCreateProject()">
 <div class="modal" role="dialog" id="newModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -47,8 +48,23 @@
             <div class="col-sm-8">
               <input type="text"
                      name="projectID"
+                     formControlName='projectID'
                      id="projectID"
+                     [ngClass]="{
+                      'is-invalid':
+                        (createProjectForm.get('projectID').touched ||
+                          createProjectForm.get('projectID').dirty) &&
+                        !createProjectForm.get('projectID').valid
+                    }"
               class="form-control">
+              <span class="invalid-feedback">
+                <span *ngIf="createProjectForm.get('projectID').errors?.required">
+                  ProjectID is required*
+                </span>
+                <span *ngIf="createProjectForm.get('projectID').errors?.minlength">
+                  Minimum of three letters*
+                </span>
+              </span>
             </div>
           </div>
 
@@ -60,8 +76,23 @@
             <div class="col-sm-8">
               <input type="text"
                      name="projectName"
+                     formControlName='projectName'
                      id="projectName"
+                     [ngClass]="{
+                      'is-invalid':
+                        (createProjectForm.get('projectName').touched ||
+                          createProjectForm.get('projectName').dirty) &&
+                        !createProjectForm.get('projectName').valid
+                    }"
               class="form-control">
+              <span class="invalid-feedback">
+                <span *ngIf="createProjectForm.get('projectName').errors?.required">
+                  project name is required*
+                </span>
+                <span *ngIf="createProjectForm.get('projectName').errors?.minlength">
+                  Minimum of three letters*
+                </span>
+              </span>
             </div>
           </div>
 
@@ -72,8 +103,20 @@
             <div class="col-sm-8">
               <input type="text"
                      name="startDate"
+                     formControlName='startDate'
                      id="startDate"
+                     [ngClass]="{
+                      'is-invalid':
+                        (createProjectForm.get('startDate').touched ||
+                          createProjectForm.get('startDate').dirty) &&
+                        !createProjectForm.get('startDate').valid
+                    }"
               class="form-control">
+              <span class="invalid-feedback">
+                <span *ngIf="createProjectForm.get('startDate').errors?.required">
+                  Start date is required*
+                </span>
+              </span>
             </div>
           </div>
 
@@ -85,16 +128,28 @@
             <div class="col-sm-4">
               <input type="text"
                      name="teamSize"
+                     formControlName='teamSize'
                      id="teamSize"
+                     [ngClass]="{
+                      'is-invalid':
+                        (createProjectForm.get('teamSize').touched ||
+                          createProjectForm.get('teamSize').dirty) &&
+                        !createProjectForm.get('teamSize').valid
+                    }"
               class="form-control">
+              <span class="invalid-feedback">
+                <span *ngIf="createProjectForm.get('teamSize').errors?.required">
+                  Start date is required*
+                </span>
+              </span>
             </div>
           </div>
           <!-- End of modal body -->
         </div>
         <div class="modal-footer">
           <!-- modal footer if any -->
-          <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-success" data-dismiss="modal">Save</button>
+          <button (click)='resetForm()' class="btn btn-warning" data-dismiss="modal">Cancel</button>
+          <button [disabled]="!createProjectForm.valid" class="btn btn-success" data-dismiss="modal">Save</button>
         </div>
     </div>
   </div>
