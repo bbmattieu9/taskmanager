@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryData } from '../app/in-memory-api/in-memory-data';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,7 @@ import { InMemoryData } from '../app/in-memory-api/in-memory-data';
     BrowserModule,
     AdminModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
 
