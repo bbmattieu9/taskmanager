@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as projects from '../api/projects/projects.json';
 
@@ -11,10 +12,19 @@ import * as projects from '../api/projects/projects.json';
 export class AppComponent implements OnInit {
   title = 'taskManager';
 
+  searchForm: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
   projs: any = (projects as any).default;
 
   ngOnInit(): void {
-      console.log('[JSON File]:', this.projs);
+
+   this.searchForm = this.fb.group({
+      Search: ['', Validators.required]
+     });
+
+   console.log('[JSON File]:', this.projs);
 
   }
 }

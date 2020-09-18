@@ -26,7 +26,7 @@
           <a class="nav-link" routerLink="projects">Projects</a>
         </li>
       </ul>
-      <form class="form-inline mt-2 mt-md-0">
+      <form [formGroup]="searchForm" class="form-inline mt-2 mt-md-0">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="search">
@@ -36,6 +36,7 @@
           <input
             class="form-control mr-sm-2"
             type="text"
+            formControlName='Search'
             placeholder="Search"
             aria-label="Search"
           />
