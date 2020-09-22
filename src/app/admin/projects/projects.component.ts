@@ -1,21 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProjectsService } from '../../shared/projects.service';
 import { Project } from '../../model/projects';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, OnDestroy {
 
   projects: Project[];
   createProjectForm: FormGroup;
+  ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private projectSrv: ProjectsService,
               private fb: FormBuilder) { }
+
+  projectObj: {
+    projectID: 0,
+    projectName: '',
+    dateOfStart: '',
+    teamSize: 0
+  };
 
 
   // tslint:disable-next-line: typedef
@@ -32,13 +41,30 @@ export class ProjectsComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onCreateProject() {
-     console.log('[onCreateProject Not Yet Implemented!!]');
 
      if (!this.createProjectForm.valid) { return false; }
 
-     console.log('[New Project Created]', this.createProjectForm.value);
+     this.projectObj = {
+        // projectID: this.createProjectForm.get('projectID').value,
+        projectID: 0,
+        projectName: this.createProjectForm.get('projectName').value,
+        dateOfStart: this.createProjectForm.get('startDate').value,
+        teamSize: this.createProjectForm.get('teamSize').value
+    };
 
-     
+    //  console.log('[New Project Created]', this.projectObj);
+    //  return;
+
+     this.projectSrv.createProduct(this.projectObj)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(
+        (response) => {
+          console.log('[Create New Project]:', response);
+          // this.projects.push(this.createProjectForm.value);
+          this.createProjectForm.reset();
+         },
+        (error) => { console.log('[Couldnt create project]', error); }
+      );
   }
 
   resetForm(): void {
@@ -49,11 +75,16 @@ export class ProjectsComponent implements OnInit {
     this.getProjects();
 
     this.createProjectForm = this.fb.group({
-      projectID: ['', Validators.required],
+      // projectID: ['', Validators.required],
       projectName: ['', [Validators.required, Validators.minLength(5)]],
       startDate: ['', Validators.required],
       teamSize: ['', Validators.required]
     });
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
 }

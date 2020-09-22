@@ -28,10 +28,10 @@ export class ProjectsService {
 
   createProduct(project: Project): Observable<Project> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    project.projectID = null;
+    project.projectID = 0;
     return this.httpSrv.post<Project>(this.projectsUrl, project, { headers })
       .pipe(
-        tap(data => console.log('createProject: ' + JSON.stringify(data))),
+        tap(data => console.log('createProject returns: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
