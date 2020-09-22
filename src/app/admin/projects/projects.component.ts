@@ -37,6 +37,8 @@ export class ProjectsComponent implements OnInit {
      if (!this.createProjectForm.valid) { return false; }
 
      console.log('[New Project Created]', this.createProjectForm.value);
+
+     
   }
 
   resetForm(): void {
