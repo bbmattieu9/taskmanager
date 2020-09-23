@@ -18,7 +18,7 @@ export class ProjectsService {
 
   // GET all projects
   getAllProjects(): Observable<Project[]> {
-    return this.httpSrv.get<Project[]>(this.projectsUrl);
+    return this.httpSrv.get<Project[]>(this.projectsUrl, {responseType: 'json'});
   }
 
   // POST a new project
@@ -34,6 +34,21 @@ export class ProjectsService {
         tap(data => console.log('createProject returns: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+  }
+
+  // Update Project
+  updateProject(existingProject: Project): Observable<Project> {
+    return this.httpSrv.put<Project>(this.projectsUrl, existingProject, {responseType: 'json'});
+  }
+
+  // Delete Project
+  deleteProject(projectID: number): Observable<string> {
+    return this.httpSrv.delete<string>(`${this.projectsUrl}?ProjectID=${projectID}`);
+  }
+
+  // Search projects
+  searchProjects(searchBy: string, searchText: string): Observable<Project[]> {
+    return this.httpSrv.get<Project[]>(`/api/projects/search/${searchBy}/${searchText}`, {responseType: 'json'});
   }
 
 

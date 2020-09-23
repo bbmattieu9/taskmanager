@@ -19,6 +19,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(private projectSrv: ProjectsService,
               private fb: FormBuilder) { }
 
+              searchBy: string;
+              searchText: string;
+
   projectObj: {
     projectID: 0,
     projectName: '',
@@ -52,9 +55,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         teamSize: this.createProjectForm.get('teamSize').value
     };
 
-    //  console.log('[New Project Created]', this.projectObj);
-    //  return;
-
      this.projectSrv.createProduct(this.projectObj)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
@@ -65,6 +65,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
          },
         (error) => { console.log('[Couldnt create project]', error); }
       );
+  }
+
+  onSearchProjects(): any {
+    this.projectSrv.searchProjects(this.searchBy, this.searchText)
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(
+      (projects: Project[]) => {
+        console.log('[Projects search Result]:', projects);
+      },
+      (error) => { console.log('[Something went wrong]:', error); }
+    );
   }
 
   resetForm(): void {
