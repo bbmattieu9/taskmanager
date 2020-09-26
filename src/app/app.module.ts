@@ -14,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryData } from '../app/in-memory-api/in-memory-data';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BaselineComponent } from './baseline/baseline.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    BaselineComponent,
   ],
   imports: [
     BrowserModule,
