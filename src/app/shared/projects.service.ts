@@ -6,6 +6,9 @@ import { Project } from '../model/projects';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
+// import environment var
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class ProjectsService {
 
   private projectsUrl = 'api/projects';
+  private baseUrl = environment.baseUrl;
 
   constructor(private httpSrv: HttpClient) { }
 
