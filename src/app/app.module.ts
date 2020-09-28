@@ -14,15 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryData } from '../app/in-memory-api/in-memory-data';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BaselineComponent } from './baseline/baseline.component';
 import { LoginComponent } from './login/login.component';
+
+import { LoginService } from '../app/shared/login.service';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaselineComponent,
     LoginComponent,
   ],
   imports: [
@@ -34,7 +34,7 @@ import { LoginComponent } from './login/login.component';
     InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
 
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
