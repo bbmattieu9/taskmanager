@@ -15,6 +15,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryData } from '../app/in-memory-api/in-memory-data';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BaselineComponent } from './baseline/baseline.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -22,6 +23,7 @@ import { BaselineComponent } from './baseline/baseline.component';
   declarations: [
     AppComponent,
     BaselineComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
