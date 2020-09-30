@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
 import { LoginService } from '../app/shared/login.service';
+import { JwtService } from '../app/shared/jwt.service';
 
 
 
@@ -34,7 +35,7 @@ import { LoginService } from '../app/shared/login.service';
     InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
 
   ],
-  providers: [LoginService],
+  providers: [LoginService, JwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

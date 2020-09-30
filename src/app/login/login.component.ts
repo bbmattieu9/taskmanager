@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.fieldTextType = !this.fieldTextType;
   }
 
-  onLogin(event): any {
+  onLogin(): any {
     this.loginSrv.login(this.loginModel).subscribe(
       (response) => {
         this.router.navigateByUrl('/dashboard');
