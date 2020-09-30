@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 
 import { LoginService } from '../app/shared/login.service';
 import { JwtService } from '../app/shared/jwt.service';
+import { JwtInterceptorService } from '../app/shared/jwt-Interceptor.service';
 
 
 
@@ -35,7 +36,7 @@ import { JwtService } from '../app/shared/jwt.service';
     InMemoryWebApiModule.forRoot(InMemoryData, { delay: 1000 }),
 
   ],
-  providers: [LoginService, JwtService],
+  providers: [LoginService, JwtService, JwtInterceptorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
